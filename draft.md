@@ -1,6 +1,7 @@
 P2P-DSN Specification v-1.0 (version negative one, alpha)
 
 Peer-To-Peer Communication protocol emphasizes on a general unified suite with various Peer-To-Peer secure and authentication methods to provide Peer-To-Peer decentralized communication systems, regardless of underlying protocols. The protocol is supposed to be an abstraction over the data. The possible uses of this layer, we wish to implement, are,
+
 1. Remote file systems/seamless file transfer and accessing,
 2. Remote streaming over a network, including web cameras, voice,
 3. Providing necessary communication systems for instant messaging.
@@ -10,8 +11,8 @@ This would effectively reduce the separate requirements for separate methods of 
 
 
 
-Network
-=======
+##Network
+
 
 Connection
 ==========
