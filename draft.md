@@ -1,4 +1,4 @@
-P2P-DSN Specification v-1.0 (version negative one, alpha)
+#P2P-DSN Specification v-1.0 (version negative one, alpha)
 
 Peer-To-Peer Communication protocol emphasizes on a general unified suite with various Peer-To-Peer secure and authentication methods to provide Peer-To-Peer decentralized communication systems, regardless of underlying protocols. The protocol is supposed to be an abstraction over the data. The possible uses of this layer, we wish to implement, are,
 
@@ -9,10 +9,7 @@ Peer-To-Peer Communication protocol emphasizes on a general unified suite with v
 
 This would effectively reduce the separate requirements for separate methods of communications between different networked applications.
 
-
-
-##Network
-
+#Network
 
 Connection
 ==========
@@ -20,6 +17,20 @@ Connection
 A server is expected to be running constantly over each peer such that it is open for connection requests. The connection may be over TLS or Plaintext as an additional encrypted authentication-based layer is to be used. The software has a "Listener" that "Listens" to a method. It could be SOCKETS, FILE, SHM, etc.
 
 P-server is the software that manages data and all other outwards connections.
+
+
+Peernames
+=========
+
+Data structure of peernames:
+Public Key,
+A short-name indicating their shortname,
+User data,
+A matrix of:
+A method identifying the method how it was received,
+A method-data field that contains additional information about the method abovementioned.
+
+Apart from the convenience in the interface, Public Key should ALWAYS be used to identify/refer to users as short-name could be changed.
 
 
 Authentication
@@ -61,6 +72,11 @@ AUTH {n|_}{s|a|_} ALGORITHM DATA
 
 Here, "n" is the method number, s is symmetric key and a is assymetric key. Unsupported authentication menthods should be reported to peer which tries to connect.
 _ => Cycle to next availabe methods-enumerator.
+
+TPAs - Third-Party Verification.
+
+The authentication information and verification, if not already avilable, could be provided by a trusted third-party verifier/authenticator, for a particular username and its corresponding Public-Key. This could partially centralized, however. The verifier signs the USERDATA with certain amount of LEVEL OF TRUST. The verifier could be just a server or peer and the userdata should be transferrable to others - the USERDATA and corresponding public key and signatures so that the verification could be "additive". A peer may have some additional signature and it should be added to others as long as it is valid, to the user's preference, of course.
+
 
 
 
@@ -198,6 +214,8 @@ Rishikedhan, 22-Jul-14<=>23-Jul-14, Created this draft.
 Edited, somewhere in between.
 
 Rishikeshan, 02-Aug-14<=>03-Aug-14, Added Services and Permission, Data Avasilability to Services section, etc.
+
+Rishikeshan, 16-Aug-14, Added Peerdata and TPVs.
 
 
 
