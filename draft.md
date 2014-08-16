@@ -21,7 +21,7 @@ Authentication
 A is assumed to know B, therefore B's public key, or, B is to be verified by a trusted third-party C, in which user of A is to be asked whether B is to be trusted based on C's signatures.
 
 Proposed authentication methods are to be commented on.
-
+```
 Public Key.
 |===|
 | a |
@@ -34,7 +34,7 @@ Private key A'
 |===|
 Public key = B,
 Private key B'
-
+```
 MSGn = Random message.
 
 A establiches a connection to B. A sends MSG1 encrypted with B's public key. B decrypts it using B' and,
