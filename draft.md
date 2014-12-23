@@ -57,21 +57,14 @@ Private key B'
 
 MSGn = Random message.
 
-A establiches a connection to B. A sends MSG1 encrypted with B's public key. B decrypts it using B' and,
-{1}
-Sends back MSG1 encrypted using A, which A shoulc be able to decrypt using private key A'. In this case, B is verified. This should be repeated by B to A to verify A.
-{2}
-Sends back MSG1 + MSG2, encrypted using A's public key; A is able to decrypt it using A'. As A gets MSG1 + MSG2, A compares MSG1 with data of length of MSG1 from MSG1 + MSG2. If it is successful, A returns MSG2 encrypted with B's public key, and sends it to B, where B would decrypt it and compare it to original MSG2. MSG2's successful comparison means that it was actually A. (Not taking the statistically insignificant random matches or birthday problem in account)
-{3}
-Optional authentication and signing from a centralized server. Here, the peers are verified of authentication by a centralized server. The centralized server then may share a permanent or temporary symmetic-key between two peers.
-
+A TLS service is going to be used for secure data exchange; the Public Key used will be checked in the database to identify and query the information about that key, the user to whom it belongs to, etc. Additionally, to speed up this process, an additional column may store a hash; if the hash matches the one in the database, the keys will be compared. A successful TLS connection indicates that the server (TLSServer) is identified to the client of that connection. The server then identifies the client (TLSclient) using some other mechanism. Or, should we reinvent the wheel? The TLS server requests the public key of the client. Then, the server sends some Msg2 encrypted with public key of the client to the client. The TLSclient decrypts and sends the data back to the TLSServer. TLSServer compares MSG2 and if that is successful, both are identified. 
 
 Authentication identifiers:
 
 AUTH {n|_}{s|a|_} ALGORITHM DATA
 
 Here, "n" is the method number, s is symmetric key and a is assymetric key. Unsupported authentication menthods should be reported to peer which tries to connect.
-_ => Cycle to next availabe methods-enumerator.
+_ => Cycle to next available methods-enumerator.
 
 TPAs - Third-Party Verification.
 
@@ -217,6 +210,16 @@ Rishikeshan, 02-Aug-14<=>03-Aug-14, Added Services and Permission, Data Avasilab
 
 Rishikeshan, 16-Aug-14, Added Peerdata and TPVs.
 
+Rishikeshan, 20-Dec-14, Removed reinventing the wheel.
+"A establishes a connection to B. A sends MSG1 encrypted with B's public key. B decrypts it using B' and,
+{1}
+Sends back MSG1 encrypted using A, which A shoulc be able to decrypt using private key A'. In this case, B is verified. This should be repeated by B to A to verify A.
+{2}
+Sends back MSG1 + MSG2, encrypted using A's public key; A is able to decrypt it using A'. As A gets MSG1 + MSG2, A compares MSG1 with data of length of MSG1 from MSG1 + MSG2. If it is successful, A returns MSG2 encrypted with B's public key, and sends it to B, where B would decrypt it and compare it to original MSG2. MSG2's successful comparison means that it was actually A. (Not taking the statistically insignificant random matches or birthday problem in account)
+{3}
+Optional authentication and signing from a centralized server. Here, the peers are verified of authentication by a centralized server. The centralized server then may share a permanent or temporary symmetic-key between two peers."
+(Oh, it should be there anyway. What the ...?)
+Added a TLS method.
 
 
 Appendix A : License
