@@ -1,4 +1,4 @@
-#P2P-DSN Specification v-1.0 (version negative one, alpha)
+# P2P-DSN Specification v-1.0 (version negative one, alpha)
 
 Peer-To-Peer Communication protocol emphasizes on a general unified suite with various Peer-To-Peer secure and authentication methods to provide Peer-To-Peer decentralized communication systems, regardless of underlying protocols. The protocol is supposed to be an abstraction over the data. The possible uses of this layer, we wish to implement, are,
 
