@@ -9,7 +9,7 @@ Peer-To-Peer Communication protocol emphasizes on a general unified suite with v
 
 This would effectively reduce the separate requirements for separate methods of communications between different networked applications.
 
-#Network
+# Network
 
 Connection
 ==========
